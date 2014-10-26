@@ -7,23 +7,23 @@ colors zenburn
 
 filetype off       "vundle required
 
-set rtp+=~/.vim/bundle/vundle "vundle required
-call vundle#rc()   "vundle init
+set rtp+=~/.vim/bundle/Vundle.vim "vundle required
+call vundle#begin()   "vundle init
 
-Bundle 'gmarik/vundle'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-surround'
-Bundle 'bling/vim-airline'
-Bundle 'spf13/PIV'
-Bundle 'chrisbra/csv.vim'
-Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'mattn/emmet-vim'
-Bundle 'tpope/vim-abolish'
-Bundle 'scrooloose/nerdtree'
-Bundle 'ap/vim-css-color'
-Bundle 'SirVer/ultisnips'
-Bundle 'Valloric/MatchTagAlways'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-airline'
+Plugin 'spf13/PIV'
+Plugin 'chrisbra/csv.vim'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-abolish'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ap/vim-css-color'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/MatchTagAlways'
 
 "TABS!
 set tabstop=4
