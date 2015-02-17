@@ -14,7 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
+Plugin 'itchyny/lightline.vim'
 Plugin 'spf13/PIV'
 Plugin 'chrisbra/csv.vim'
 Plugin 'jmcantrell/vim-virtualenv'
@@ -24,6 +24,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ap/vim-css-color'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/MatchTagAlways'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'jelera/vim-javascript-syntax'
+
+call vundle#end()   "vundle load plugin
 
 "TABS!
 set tabstop=4
@@ -90,12 +94,6 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 0
 let g:ycm_min_num_of_chars_for_completion = 1
 
-" AirLine
-" -------
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
 " Emmet
 " -----
 let g:user_emmet_install_global = 0
@@ -103,4 +101,3 @@ let g:user_emmet_leader_key='<C-z>'
 autocmd Filetype html,css EmmetInstall
 
 source ~/.vimrc.bepo
-
