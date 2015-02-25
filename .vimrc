@@ -26,8 +26,13 @@ Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/MatchTagAlways'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'Yggdroot/indentLine'
+Plugin 'wikitopian/hardmode'
 
 call vundle#end()   "vundle load plugin
+
+"Resize des split screen!
+autocmd VimResized * :wincmd =
 
 "TABS!
 set tabstop=4
