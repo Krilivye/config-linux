@@ -29,6 +29,37 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Yggdroot/indentLine'
 Plugin 'wikitopian/hardmode'
 
+"from taf
+Plugin 'gmarik/Vundle.vim'
+
+"Plugin 'klen/python-mode'
+Plugin 'python-rope/ropevim'
+Plugin 'hynek/vim-python-pep8-indent'
+
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'ap/vim-css-color'
+Plugin 'elzr/vim-json'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'mattn/emmet-vim'
+
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'Valloric/MatchTagAlways'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-surround'
+Plugin 'myusuf3/numbers.vim'
+
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'bling/vim-airline'
+Plugin 'Yggdroot/indentLine'
+
+
+
 call vundle#end()   "vundle load plugin
 
 "Resize des split screen!
