@@ -1,55 +1,66 @@
 set nocompatible   "vIM
 
+syntax off
+
 set t_Co=256       "Terminal support
 set encoding=utf-8 "Must be!
 set number         "Line number!
-colors zenburn
 
 filetype off       "vundle required
 
 set rtp+=~/.vim/bundle/Vundle.vim "vundle required
 call vundle#begin()   "vundle init
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim' "vundle! automaj!
 
-Plugin 'spf13/PIV'
+"Plugin 'spf13/PIV' "PHP
 
-Plugin 'python-rope/ropevim'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'hdima/python-syntax'
+Plugin 'python-rope/ropevim' "ropevim
+Plugin 'hynek/vim-python-pep8-indent' "pep8 indent
+Plugin 'hdima/python-syntax' "python 3
 
-Plugin 'chrisbra/csv.vim'
+Plugin 'chrisbra/csv.vim' "Gestion des fichiers CSV
 
-Plugin 'othree/html5.vim'
-Plugin 'elzr/vim-json'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'ap/vim-css-color'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'mattn/emmet-vim'
-Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'othree/html5.vim' "html5 syntax / indent
+Plugin 'elzr/vim-json' "json syntax / indent
+Plugin 'plasticboy/vim-markdown' "markdown syntax / indent
+Plugin 'ap/vim-css-color' " colorations des #FFFFFF et rgba(0,2,3) dans les fichiers!
+Plugin 'pangloss/vim-javascript' "js syntax / indent extension
+Plugin 'jelera/vim-javascript-syntax' "js syntax / indent
+Plugin 'mattn/emmet-vim' "ZenCoding pour html/css must read => emmet.io
+Plugin 'chase/Vim-Jinja2-Syntax' "jinja2 syntax...
+Plugin 'nathanaelkane/vim-indent-guides' " indent for callback!
 
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'Valloric/MatchTagAlways'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'myusuf3/numbers.vim'
+Plugin 'ntpeters/vim-better-whitespace' "Pour virer les espace vide. :StripWhitespace
+Plugin 'Valloric/MatchTagAlways' "Matching des ()[]{} inteligent
+Plugin 'tpope/vim-abolish' ":%s mais bien plus cool et pour programmeur... :Subvert
+Plugin 'tpope/vim-surround' "pour du script-fu  select intelligent dans les ()[]{}
+Plugin 'tpope/vim-repeat' "la commande . surbooster
+Plugin 'terryma/vim-multiple-cursors' "Pour les pas douer comme moi de la selection en block
 
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Lokaltog/vim-easymotion' "Recherche dans le text très avancé :)
+Plugin 'SirVer/ultisnips' " snippets
+Plugin 'honza/vim-snippets' " bibliothèques de snippets
+Plugin 'scrooloose/syntastic' " check style
+Plugin 'Valloric/YouCompleteMe' " serveur d'autocompletion externe très performant
+Plugin 'ctrlpvim/ctrlp.vim' " controlp
 
-Plugin 'scrooloose/nerdtree'
-
-Plugin 'itchyny/lightline.vim'
-Plugin 'Yggdroot/indentLine'
-Plugin 'wikitopian/hardmode'
+Plugin 'scrooloose/nerdtree' " pour l'exploration de fichiers
+Plugin 'jimsei/winresizer' " pour la gestion des fenètres
+Plugin 'jnurmine/Zenburn' " ma colo préféré
+Plugin 'itchyny/lightline.vim' "Une status line qui rocks et qui pulse
+Plugin 'tweekmonster/braceless.vim' "Gestion des indents dans python et autres languages sans {} 
+Plugin 'wikitopian/hardmode' " HARDCORE mode pour vim... plus de flèches et autres...
 
 
 call vundle#end()   "vundle load plugin
+syntax enable
+set background=dark
+colorscheme zenburn
+"colorscheme solarized
+"let g:solarized_termcolors=256
+
+"Needed
 filetype plugin indent on
 
 " Resize des split screen!
@@ -60,15 +71,13 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-"Needed
-syntax on
 
 "Minibuffer line
+set laststatus=2
 set showmode
 set cursorline
 set showmatch
 let g:airline_powerline_fonts =1
-set laststatus=2
 
 "search options
 set ignorecase
@@ -77,8 +86,9 @@ set incsearch
 set hlsearch
 
 "popup motions
+set wildmode=longest,list,full
 set wildmenu
-set wildmode=list:longest,full
+set completeopt=menu,menuone,longest
 
 "need!
 set autoindent
@@ -94,11 +104,41 @@ set showcmd
 set showmode
 set matchpairs+=<:>
 set title
-
-set mouse=a
+set foldlevelstart=99
 set autoread
 
+set mouse=a
+set pastetoggle=<F2>
+set autoread
+
+set wrap
+set linebreak
+set breakindent
+set showbreak==>
+
 let mapleader=","
+
+"Easy-motion
+nmap s <Plug>(easymotion-s)
+xmap s <Plug>(easymotion-s)
+omap s <Plug>(easymotion-s)
+
+map f <Plug>(easymotion-f)
+map F <Plug>(easymotion-F)
+
+map w <Plug>(easymotion-bd-w)
+map W <Plug>(easymotion-bd-W)
+
+map / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>h <Plug>(easymotion-linebackward)
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0
 
 "Column size
 set cc=80
@@ -123,8 +163,8 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " Emmet
 " -----
 let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-z>'
-autocmd Filetype html,css EmmetInstall
+let g:user_emmet_leader_key='<C-Space>'
+autocmd Filetype html,css,jinja EmmetInstall
 
 " Ropevim
 " -------
@@ -140,9 +180,38 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_flake8_args = '--ignore=E501'
+
+" CtrlP
+" -----
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+            \ --ignore .git
+            \ --ignore .svn
+            \ --ignore .hg
+            \ --ignore .DS_Store
+            \ --ignore "**/*.pyc"
+            \ --ignore BoostParts
+            \ -g ""'
+" Braceless
+" ---------
+autocmd FileType python BracelessEnable +indent +highlight
+
+let g:jinja_syntax_html=1
+
+" source ~/.vimrc.bepo
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 
-source ~/.vimrc.bepo
+" Coloration des .tag riotjs
+let javascript_enable_domhtmlcss = 1
+let jsx_ext_required = 0
+au BufNewFile,BufRead *.tag setlocal ft=htm
+
+
+nnoremap <leader>ev :vs $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
