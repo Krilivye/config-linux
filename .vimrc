@@ -31,7 +31,6 @@ Plug 'mxw/vim-jsx', {'for': ['html','jinja', 'javascript']} "js syntax / indent
 Plug 'mattn/emmet-vim', {'for': ['html', 'jinja', 'javascript']} "ZenCoding pour html/css must read => emmet.io
 Plug 'chase/Vim-Jinja2-Syntax', {'for': ['html', 'jinja']} "jinja2 syntax...
 
-
 Plug 'ntpeters/vim-better-whitespace' "Pour virer les espace vide. :StripWhitespace
 Plug 'Valloric/MatchTagAlways' "Matching des ()[]{} inteligent
 Plug 'tpope/vim-abolish' ":%s mais bien plus cool et pour programmeur... :Subvert
@@ -49,7 +48,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " pour l'exploration de f
 Plug 'jimsei/winresizer' " pour la gestion des fenètres
 Plug 'jnurmine/Zenburn' " ma colo préféré
 Plug 'itchyny/lightline.vim' "Une status line qui rocks et qui pulse
-Plug 'tweekmonster/braceless.vim' "Gestion des indents dans python et autres languages sans {} 
+Plug 'tweekmonster/braceless.vim' "Gestion des indents dans python et autres languages sans {}
 Plug 'wikitopian/hardmode' " HARDCORE mode pour vim... plus de flèches et autres...
 
 call plug#end()   "vundle load plugin
@@ -190,7 +189,12 @@ let g:syntastic_python_flake8_args = '--ignore=E501'
 " CtrlP
 " -----
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+
+" The Silver Searcher
+" -------------------
+if executable('ag')
+    " Ag in controlp
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
             \ --ignore .git
             \ --ignore .svn
             \ --ignore .hg
@@ -198,6 +202,8 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
             \ --ignore "**/*.pyc"
             \ --ignore BoostParts
             \ -g ""'
+endif
+
 " Braceless
 " ---------
 autocmd FileType python BracelessEnable +indent +highlight
