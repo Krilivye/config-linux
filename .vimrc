@@ -1,67 +1,72 @@
 set nocompatible   "vIM
-
-syntax off
-
 set t_Co=256       "Terminal support
 set encoding=utf-8 "Must be!
-set number         "Line number!
-
-filetype off       "vundle required
-
-set rtp+=~/.vim/bundle/Vundle.vim "vundle required
-call vundle#begin()   "vundle init
-
-Plugin 'gmarik/Vundle.vim' "vundle! automaj!
-
-"Plugin 'spf13/PIV' "PHP
-
-Plugin 'python-rope/ropevim' "ropevim
-Plugin 'hynek/vim-python-pep8-indent' "pep8 indent
-Plugin 'hdima/python-syntax' "python 3
-
-Plugin 'chrisbra/csv.vim' "Gestion des fichiers CSV
-
-Plugin 'othree/html5.vim' "html5 syntax / indent
-Plugin 'elzr/vim-json' "json syntax / indent
-Plugin 'plasticboy/vim-markdown' "markdown syntax / indent
-Plugin 'ap/vim-css-color' " colorations des #FFFFFF et rgba(0,2,3) dans les fichiers!
-Plugin 'pangloss/vim-javascript' "js syntax / indent extension
-Plugin 'jelera/vim-javascript-syntax' "js syntax / indent
-Plugin 'mattn/emmet-vim' "ZenCoding pour html/css must read => emmet.io
-Plugin 'chase/Vim-Jinja2-Syntax' "jinja2 syntax...
-Plugin 'nathanaelkane/vim-indent-guides' " indent for callback!
-
-Plugin 'ntpeters/vim-better-whitespace' "Pour virer les espace vide. :StripWhitespace
-Plugin 'Valloric/MatchTagAlways' "Matching des ()[]{} inteligent
-Plugin 'tpope/vim-abolish' ":%s mais bien plus cool et pour programmeur... :Subvert
-Plugin 'tpope/vim-surround' "pour du script-fu  select intelligent dans les ()[]{}
-Plugin 'tpope/vim-repeat' "la commande . surbooster
-Plugin 'terryma/vim-multiple-cursors' "Pour les pas douer comme moi de la selection en block
-
-Plugin 'Lokaltog/vim-easymotion' "Recherche dans le text très avancé :)
-Plugin 'SirVer/ultisnips' " snippets
-Plugin 'honza/vim-snippets' " bibliothèques de snippets
-Plugin 'scrooloose/syntastic' " check style
-Plugin 'Valloric/YouCompleteMe' " serveur d'autocompletion externe très performant
-Plugin 'ctrlpvim/ctrlp.vim' " controlp
-
-Plugin 'scrooloose/nerdtree' " pour l'exploration de fichiers
-Plugin 'jimsei/winresizer' " pour la gestion des fenètres
-Plugin 'jnurmine/Zenburn' " ma colo préféré
-Plugin 'itchyny/lightline.vim' "Une status line qui rocks et qui pulse
-Plugin 'tweekmonster/braceless.vim' "Gestion des indents dans python et autres languages sans {} 
-Plugin 'wikitopian/hardmode' " HARDCORE mode pour vim... plus de flèches et autres...
 
 
-call vundle#end()   "vundle load plugin
-syntax enable
+"plug autoinstall
+if empty(glob('~/.vim/autoload/plug.vim'))
+      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall | source $MYVIMRC
+    endif
+
+call plug#begin()   "plug init
+
+"Plug 'spf13/PIV' "PHP
+
+Plug 'python-rope/ropevim', {'for': ['python']} "ropevim
+Plug 'hynek/vim-python-pep8-indent', {'for': ['python']} "pep8 indent
+Plug 'hdima/python-syntax', {'for': ['python']} "python 3
+
+Plug 'chrisbra/csv.vim' "Gestion des fichiers CSV
+
+Plug 'othree/html5.vim', {'for': ['html', 'jinja', 'javascript']} "html5 syntax / indent
+Plug 'elzr/vim-json' "json syntax / indent
+Plug 'plasticboy/vim-markdown' "markdown syntax / indent
+Plug 'ap/vim-css-color' " colorations des #FFFFFF et rgba(0,2,3) dans les fichiers!
+Plug 'gavocanov/vim-js-indent', {'for': ['html','jinja', 'javascript']} "js syntax / indent extension
+Plug 'othree/yajs.vim', {'for': ['html','jinja', 'javascript']} "js syntax / indent
+Plug 'othree/javascript-libraries-syntax.vim', {'for': ['html','jinja', 'javascript']} "js syntax / indent
+Plug 'mxw/vim-jsx', {'for': ['html','jinja', 'javascript']} "js syntax / indent
+Plug 'mattn/emmet-vim', {'for': ['html', 'jinja', 'javascript']} "ZenCoding pour html/css must read => emmet.io
+Plug 'chase/Vim-Jinja2-Syntax', {'for': ['html', 'jinja']} "jinja2 syntax...
+Plug 'nathanaelkane/vim-indent-guides' " indent for callback!
+
+Plug 'ntpeters/vim-better-whitespace' "Pour virer les espace vide. :StripWhitespace
+Plug 'Valloric/MatchTagAlways' "Matching des ()[]{} inteligent
+Plug 'tpope/vim-abolish' ":%s mais bien plus cool et pour programmeur... :Subvert
+Plug 'tpope/vim-surround' "pour du script-fu  select intelligent dans les ()[]{}
+Plug 'tpope/vim-repeat' "la commande . surbooster
+Plug 'terryma/vim-multiple-cursors' "Pour les pas douer comme moi de la selection en block
+
+Plug 'Lokaltog/vim-easymotion' "Recherche dans le text très avancé :)
+Plug 'scrooloose/syntastic' " check style
+Plug 'SirVer/ultisnips', {'on': [] } " snippets
+Plug 'honza/vim-snippets', {'on': [] } " bibliothèques de snippets
+Plug 'Valloric/YouCompleteMe', { 'on': [] ,'do': './install.py --tern-completer' } " serveur d'autocompletion externe très performant
+Plug 'ctrlpvim/ctrlp.vim' " controlp
+
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " pour l'exploration de fichiers
+Plug 'jimsei/winresizer' " pour la gestion des fenètres
+Plug 'jnurmine/Zenburn' " ma colo préféré
+Plug 'itchyny/lightline.vim' "Une status line qui rocks et qui pulse
+Plug 'tweekmonster/braceless.vim' "Gestion des indents dans python et autres languages sans {} 
+Plug 'wikitopian/hardmode' " HARDCORE mode pour vim... plus de flèches et autres...
+
+call plug#end()   "vundle load plugin
+
+augroup load_us_sni_ycm
+    autocmd!
+    autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
+                        \| call youcompleteme#Enable() | autocmd! load_us_sni_ycm
+augroup END
+
+"Needed
 set background=dark
 colorscheme zenburn
 "colorscheme solarized
 "let g:solarized_termcolors=256
 
-"Needed
-filetype plugin indent on
 
 " Resize des split screen!
 autocmd VimResized * :wincmd =
@@ -91,6 +96,7 @@ set wildmenu
 set completeopt=menu,menuone,longest
 
 "need!
+set number         "Line number!
 set autoindent
 set smartindent
 nmap <F8> :TagbarToggle<CR>
