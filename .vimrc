@@ -37,7 +37,6 @@ Plug 'Valloric/MatchTagAlways' "Matching des ()[]{} inteligent
 Plug 'tpope/vim-abolish' ":%s mais bien plus cool et pour programmeur... :Subvert
 Plug 'tpope/vim-surround' "pour du script-fu  select intelligent dans les ()[]{}
 Plug 'tpope/vim-repeat' "la commande . surbooster
-Plug 'terryma/vim-multiple-cursors' "Pour les pas douer comme moi de la selection en block
 
 Plug 'Lokaltog/vim-easymotion' "Recherche dans le text très avancé :)
 Plug 'scrooloose/syntastic' " check style
