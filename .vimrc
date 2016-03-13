@@ -30,7 +30,7 @@ Plug 'othree/javascript-libraries-syntax.vim', {'for': ['html','jinja', 'javascr
 Plug 'mxw/vim-jsx', {'for': ['html','jinja', 'javascript']} "js syntax / indent
 Plug 'mattn/emmet-vim', {'for': ['html', 'jinja', 'javascript']} "ZenCoding pour html/css must read => emmet.io
 Plug 'chase/Vim-Jinja2-Syntax', {'for': ['html', 'jinja']} "jinja2 syntax...
-Plug 'nathanaelkane/vim-indent-guides' " indent for callback!
+
 
 Plug 'ntpeters/vim-better-whitespace' "Pour virer les espace vide. :StripWhitespace
 Plug 'Valloric/MatchTagAlways' "Matching des ()[]{} inteligent
