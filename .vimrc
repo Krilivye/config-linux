@@ -1,7 +1,7 @@
 set nocompatible   "vIM
-set t_Co=256       "Terminal support
 set encoding=utf-8 "Must be!
-
+set t_Co=256
+set termguicolors
 
 "plug autoinstall
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -14,22 +14,22 @@ call plug#begin()   "plug init
 
 "Plug 'spf13/PIV' "PHP
 
-Plug 'python-rope/ropevim', {'for': ['python']} "ropevim
-Plug 'hynek/vim-python-pep8-indent', {'for': ['python']} "pep8 indent
 Plug 'hdima/python-syntax', {'for': ['python']} "python 3
+Plug 'hynek/vim-python-pep8-indent', {'for': ['python']} "pep8 indent
 
-Plug 'chrisbra/csv.vim' "Gestion des fichiers CSV
+Plug 'jdonaldson/vaxe'
 
-Plug 'othree/html5.vim', {'for': ['html', 'jinja', 'javascript']} "html5 syntax / indent
-Plug 'elzr/vim-json' "json syntax / indent
-Plug 'plasticboy/vim-markdown' "markdown syntax / indent
-Plug 'ap/vim-css-color' " colorations des #FFFFFF et rgba(0,2,3) dans les fichiers!
-Plug 'gavocanov/vim-js-indent', {'for': ['html','jinja', 'javascript']} "js syntax / indent extension
-Plug 'othree/yajs.vim', {'for': ['html','jinja', 'javascript']} "js syntax / indent
-Plug 'othree/javascript-libraries-syntax.vim', {'for': ['html','jinja', 'javascript']} "js syntax / indent
-Plug 'mxw/vim-jsx', {'for': ['html','jinja', 'javascript']} "js syntax / indent
-Plug 'mattn/emmet-vim', {'for': ['html', 'jinja', 'javascript']} "ZenCoding pour html/css must read => emmet.io
-Plug 'chase/Vim-Jinja2-Syntax', {'for': ['html', 'jinja']} "jinja2 syntax...
+Plug 'python-rope/ropevim', {'for': ['python']} "ropevim
+Plug 'alfredodeza/coveragepy.vim', { 'for': ['python']}
+
+Plug 'elzr/vim-json', {'for': ['html', 'json','javascript']} "json syntax / indent
+Plug 'plasticboy/vim-markdown', { 'for': ['html','markdown','javascript'] } "markdown syntax / indent
+Plug 'pangloss/vim-javascript', { 'for': ['html','jinja','javascript', 'javascript.jsx'] }
+Plug 'mxw/vim-jsx', {'for': ['html','jinja', 'javascript', 'javascript.jsx']} "js syntax / indent
+Plug 'nicklasos/vim-jsx-riot', {'for': ['html','jinja','javascript','javascript.jsx']},
+Plug 'chase/Vim-Jinja2-Syntax', {'for': ['html','jinja', 'javascript', 'javascript.jsx']} "jinja2 syntax...
+Plug 'ap/vim-css-color', {'for': ['html','jinja', 'javascript', 'javascript.jsx', 'css']}  " colorations des #FFFFFF et rgb(0,2,3) dans les fichiers
+Plug 'mattn/emmet-vim', {'for': ['html', 'jinja', 'javascript', 'javascript.jsx', 'css']} "ZenCoding pour html/css must read => emmet.io
 
 Plug 'ntpeters/vim-better-whitespace' "Pour virer les espace vide. :StripWhitespace
 Plug 'Valloric/MatchTagAlways' "Matching des ()[]{} inteligent
@@ -37,50 +37,47 @@ Plug 'tpope/vim-abolish' ":%s mais bien plus cool et pour programmeur... :Subver
 Plug 'tpope/vim-surround' "pour du script-fu  select intelligent dans les ()[]{}
 Plug 'tpope/vim-repeat' "la commande . surbooster
 
-Plug 'Lokaltog/vim-easymotion' "Recherche dans le text très avancé :)
-Plug 'scrooloose/syntastic' " check style
-Plug 'SirVer/ultisnips', {'on': [] } " snippets
-Plug 'honza/vim-snippets', {'on': [] } " bibliothèques de snippets
-Plug 'Valloric/YouCompleteMe', { 'on': [] ,'do': './install.py --tern-completer' } " serveur d'autocompletion externe très performant
-Plug 'ctrlpvim/ctrlp.vim' " controlp
+Plug 'easymotion/vim-easymotion' "Recherche dans le text très avancé :)
+Plug 'w0rp/ale' " Linter
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' } " serveur d'autocompletion externe très performant
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " pour l'exploration de fichiers
 Plug 'jimsei/winresizer' " pour la gestion des fenètres
 Plug 'jnurmine/Zenburn' " ma colo préféré
 Plug 'itchyny/lightline.vim' "Une status line qui rocks et qui pulse
 Plug 'tweekmonster/braceless.vim' "Gestion des indents dans python et autres languages sans {}
-Plug 'wikitopian/hardmode' " HARDCORE mode pour vim... plus de flèches et autres...
 
-call plug#end()   "vundle load plugin
+Plug 'chaoren/vim-wordmotion'
+Plug 'dpelle/vim-Grammalecte'
 
-augroup load_us_sni_ycm
-    autocmd!
-    autocmd InsertEnter * call plug#load('ultisnips', 'vim-snippets', 'YouCompleteMe')
-                        \| call youcompleteme#Enable() | autocmd! load_us_sni_ycm
-augroup END
+Plug 'junegunn/goyo.vim'
+
+Plug 'whatyouhide/vim-gotham'
+Plug 'altercation/vim-colors-solarized'
+
+call plug#end()   "plug load plugin
+let g:grammalecte_cli_py="/usr/share/grammalecte-fr/cli.py"
 
 "Needed
-set background=dark
-colorscheme zenburn
-"colorscheme solarized
-"let g:solarized_termcolors=256
-
+set background=light
+colorscheme solarized
+let g:lightline = { 'colorscheme': 'solarized' }
 
 " Resize des split screen!
 autocmd VimResized * :wincmd =
 
+
 "TABS!
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 
 "Minibuffer line
-set laststatus=2
 set showmode
 set cursorline
 set showmatch
-let g:airline_powerline_fonts =1
+set laststatus=2
 
 "search options
 set ignorecase
@@ -89,15 +86,15 @@ set incsearch
 set hlsearch
 
 "popup motions
-set wildmode=longest,list,full
 set wildmenu
+set wildmode=list:longest,full
 set completeopt=menu,menuone,longest
 
 "need!
 set number         "Line number!
 set autoindent
 set smartindent
-nmap <F8> :TagbarToggle<CR>
+set pastetoggle=<F2>
 
 "comfort
 set history=1000
@@ -109,10 +106,9 @@ set showmode
 set matchpairs+=<:>
 set title
 set foldlevelstart=99
-set autoread
+set backupcopy=yes
 
 set mouse=a
-set pastetoggle=<F2>
 set autoread
 
 set wrap
@@ -120,6 +116,7 @@ set linebreak
 set breakindent
 set showbreak==>
 
+"C'est un peu pour le bépo ca...
 let mapleader=","
 
 "Easy-motion
@@ -129,10 +126,8 @@ omap s <Plug>(easymotion-s)
 
 map f <Plug>(easymotion-f)
 map F <Plug>(easymotion-F)
-
 map w <Plug>(easymotion-bd-w)
 map W <Plug>(easymotion-bd-W)
-
 map / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map n <Plug>(easymotion-next)
@@ -145,16 +140,10 @@ let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0
 
 "Column size
-set cc=80
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
-" UltiSnips
-" ---------
-let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsDontReverseSearchPath=1
+autocmd FileType python set colorcolumn=80
+autocmd FileType python highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+autocmd FileType python match OverLength /\%81v.\+/
+autocmd BufNewFile,BufRead *.jinja set ft=jinja
 
 " YouCompleteMe
 " -------------
@@ -167,30 +156,25 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " Emmet
 " -----
 let g:user_emmet_install_global = 0
-let g:user_emmet_leader_key='<C-Space>'
-autocmd Filetype html,css,jinja EmmetInstall
+let g:user_emmet_leader_key=',,'
+let g:user_emmet_mode='n'
+autocmd Filetype html,css,jinja,javascript,jsx EmmetInstall
 
 " Ropevim
 " -------
 let g:ropevim_guess_project = 1
 
-" Syntastics
-" ----------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_flake8_args = '--ignore=E501'
-
-" CtrlP
+" Jinja
 " -----
-let g:ctrlp_map = '<c-p>'
+let g:jinja_syntax_html=1
 
-" The Silver Searcher
+
+" Goyo
+" ----
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" The Silver Searcher
 " -------------------
 if executable('ag')
     " Ag in controlp
@@ -204,25 +188,33 @@ if executable('ag')
             \ -g ""'
 endif
 
+
 " Braceless
-" ---------
-autocmd FileType python BracelessEnable +indent +highlight
-
-let g:jinja_syntax_html=1
-
-" source ~/.vimrc.bepo
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-
+autocmd Filetype python BracelessEnable +indent +highlight
 
 " Coloration des .tag riotjs
 let javascript_enable_domhtmlcss = 1
 let jsx_ext_required = 0
-au BufNewFile,BufRead *.tag setlocal ft=htm
+autocmd BufNewFile,BufRead *.tag.html setlocal ft=javascript
 
+" ALE
+let g:ale_python_flake8_args = '--max-line-length=160'
+let g:ale_javascript_standard_options = '--plugin riot'
 
-nnoremap <leader>ev :vs $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
 
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline=%{LinterStatus()}
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
