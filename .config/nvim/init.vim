@@ -17,6 +17,7 @@ call plug#begin(expand('~/.config/nvim/plugged')) "Plug init
 Plug 'python-rope/ropevim',{'for': ['python']} "ropevim
 Plug 'hynek/vim-python-pep8-indent', {'for': ['python']} "pep8 indent
 Plug 'hdima/python-syntax', {'for': ['python']} "python 3
+Plug 'alfredodeza/coveragepy.vim', {'for': ['python']}
 
 Plug 'ambv/black' " Python BLACK :Black
 
@@ -43,6 +44,9 @@ Plug 'tpope/vim-commentary' " Commenter une ligne: gcc
 
 Plug 'w0rp/ale' "CheckStyle modern
 Plug 'Lokaltog/vim-easymotion' "Recherche dans le text très avancé :)
+Plug 'chaoren/vim-wordmotion'
+
+Plug 'dpell/vim-Grammalecte'
 
 Plug 'mhinz/vim-signify'
 
@@ -228,6 +232,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 let g:python_higlight_all = 1
 
 " ALE
+let g:ale_python_pylint_change_directory=0
 let g:ale_linters = { 'python': ['pylint', 'mypy'] }
 let g:ale_echo_msg_error_str = '❌'
 let g:ale_echo_msg_warning_str = '⚠️'
